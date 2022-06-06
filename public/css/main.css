@@ -163,11 +163,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 .blue {
-    color: #38b7ea;
+    color: #d51717;
 }
 
 .blue:hover {
-    color: #38b7ea;
+    color: #c31717;
 }
 
 .red {

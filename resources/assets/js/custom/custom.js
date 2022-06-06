@@ -101,7 +101,7 @@ function deleteItemAjax (url, tableId, header, callFunction = null) {
                 title: 'Deleted!',
                 text: header + ' has been deleted.',
                 type: 'success',
-                confirmButtonColor: '#6777ef',
+                confirmButtonColor: '#c9161c',
                 timer: 2000,
             });
             if (callFunction) {
@@ -113,7 +113,7 @@ function deleteItemAjax (url, tableId, header, callFunction = null) {
                 title: '',
                 text: data.responseJSON.message,
                 type: 'error',
-                confirmButtonColor: '#6777ef',
+                confirmButtonColor: '#c9161c',
                 timer: 5000,
             });
         },
