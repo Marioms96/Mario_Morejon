@@ -59,8 +59,12 @@
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                        Login
+                        Iniciar sesión
                     </button>
+                    <div class="mt-5 text-muted text-center">
+                        ¿Eres nuevo? <a
+                                href="{{ route('register') }}">Crear cuenta</a>
+                    </div>
                 </div>
             </form>
         </div>

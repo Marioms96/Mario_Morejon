@@ -15,54 +15,54 @@
                             <label for="first_name">Nombre</label><span
                                     class="text-danger">*</span>
                             <input id="firstName" type="text"
-                                   class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                   name="name"
-                                   tabindex="1" placeholder="Inserta nombre" value="{{ old('name') }}"
+                                   class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}"
+                                   name="nombre"
+                                   tabindex="1" placeholder="Inserta nombre" value="{{ old('nombre') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
+                                {{ $errors->first('nombre') }}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="first_name">Apellidos</label><span
+                            <label for="last_name">Apellidos</label><span
                                     class="text-danger">*</span>
-                            <input id="firstName" type="text"
-                                   class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                   name="name"
-                                   tabindex="1" placeholder="Inserta apellidos" value="{{ old('name') }}"
+                            <input id="lastName" type="text"
+                                   class="form-control{{ $errors->has('apellidos') ? ' is-invalid' : '' }}"
+                                   name="apellidos"
+                                   tabindex="1" placeholder="Inserta apellidos" value="{{ old('apellidos') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
+                                {{ $errors->first('apellidos') }}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="first_name">DNI</label><span
+                            <label for="ident-number">DNI</label><span
                                     class="text-danger">*</span>
-                            <input id="firstName" type="text"
-                                   class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                   name="name"
-                                   tabindex="1" placeholder="Inserta DNI" value="{{ old('name') }}"
+                            <input id="identNumber" type="text"
+                                   class="form-control{{ $errors->has('dni') ? ' is-invalid' : '' }}"
+                                   name="dni"
+                                   tabindex="1" placeholder="Inserta DNI" value="{{ old('dni') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
+                                {{ $errors->first('dni') }}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="first_name">Teléfono</label><span
+                            <label for="telephone-number">Teléfono</label><span
                                     class="text-danger">*</span>
-                            <input id="firstName" type="text"
-                                   class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                   name="name"
-                                   tabindex="1" placeholder="Inserta tu teléfono" value="{{ old('name') }}"
+                            <input id="telephoneNumber" type="text"
+                                   class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}"
+                                   name="telefono"
+                                   tabindex="1" placeholder="Inserta tu teléfono" value="{{ old('telefono') }}"
                                    autofocus required>
                             <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
+                                {{ $errors->first('telefono') }}
                             </div>
                         </div>
                     </div>
