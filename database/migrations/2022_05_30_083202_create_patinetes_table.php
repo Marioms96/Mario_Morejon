@@ -14,7 +14,7 @@ class CreatePatinetesTable extends Migration
     public function up()
     {
         Schema::create('patinetes', function (Blueprint $table) {
-            $table->integer('id_patinete');
+            $table->string('id_patinete');
             $table->string('marca');
             $table->string('modelo');
             $table->string('estado');

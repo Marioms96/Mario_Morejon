@@ -15,7 +15,7 @@ class CreateAlquilerTable extends Migration
     {
         Schema::create('alquiler', function (Blueprint $table) {
             $table->bigInteger('id_cliente_alquiler');
-            $table->integer('id_patinete_alquiler');
+            $table->string('id_patinete_alquiler');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->integer('id_pago');

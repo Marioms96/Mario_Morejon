@@ -32,14 +32,18 @@ WebFont.load({
 });
 
 /*-------------------------------------- 2. Google Contact Map --------------------------------------*/
-function initMap () {
-    var mapDiv = document.getElementById('contact-map-inside');
-    var map = new google.maps.Map(mapDiv, {
-        center: { lat: 40.7058254, lng: -74.1180847 },
-        zoom: 12,
-    });
-}
+            let map;
+            function iniciarMap(){
+            var coord = {lat: -34.397, lng: 150.644 };
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 8,
+                    center: coord,
+                  
+                });
+              }
+            
 
+//----------------------------------------------------------------------------------------------------------
 $(document).ready(function () {
 
     /*-------------------------------------- 3. Retina.js --------------------------------------*/

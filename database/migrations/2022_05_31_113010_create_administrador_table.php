@@ -15,7 +15,7 @@ class CreateAdministradorTable extends Migration
     {
         Schema::create('administrador', function (Blueprint $table) {
             $table->bigInteger('id_administrador');
-            $table->integer('id_patinetes');
+            $table->string('id_patinetes');
         });
     }
 
