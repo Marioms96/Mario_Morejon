@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Patinetes;
 class PatinetesController extends Controller
 {
+    function __contrusct()
+    {
+        $this->middleware('permission:ver-patinetes|crear-patinetes|editar-patinetes|borrar-patientes', ['only'=>['index']]);
+        $this->middleware('permission:crear-patinetes', ['only'=>['create', 'store']]);
+        $this->middleware('permission:editar-patinetes', ['only'=>['edit', 'update']]);
+        $this->middleware('permission:borrar-patinetes', ['only'=>['destroy']]);
+    } 
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,8 @@ class PatinetesController extends Controller
      */
     public function index()
     {
-        //
+        $patinetes = Patinetes:: paginate(5);
+        return view('patinetes.index', compact('patinetes'));
     }
 
     /**
@@ -23,7 +31,7 @@ class PatinetesController extends Controller
      */
     public function create()
     {
-        //
+        return view('patinetes.crear');
     }
 
     /**
@@ -34,7 +42,16 @@ class PatinetesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'marca' => 'required' ,
+            'modelo' => 'required',
+            'estado' => 'required',
+            'velocidad' => 'required',
+            'tiempo_uso' => 'required'
+        ]);
+
+       $patinetes = Patinetes::create($request->all());
+       return redirect()->route('patinetes.index');
     }
 
     /**
@@ -54,9 +71,9 @@ class PatinetesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Patinetes $patinetes)
     {
-        //
+        return view('patinetes.editar', compact('patinetes'));
     }
 
     /**
@@ -66,9 +83,18 @@ class PatinetesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Patinetes $patinetes)
     {
-        //
+        request()->validate([
+            'marca' => 'required' ,
+            'modelo' => 'required',
+            'estado' => 'required',
+            'velocidad' => 'required',
+            'tiempo_uso' => 'required'
+        ]);
+
+        $patinetes->update($request->all());
+        return redirect()->route('patinetes.index');
     }
 
     /**
@@ -77,8 +103,9 @@ class PatinetesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Patinetes $patinetes)
     {
-        //
+        $patinetes->delete();
+        return redirect('patinetes.index');
     }
 }

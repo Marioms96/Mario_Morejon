@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Patinetes extends Model
 {
     use HasFactory;
-    protected $fillable = ['marca', 'estado', 'velocidad', 'tiempo_uso'];
+    protected $fillable = ['marca','modelo', 'estado', 'velocidad', 'tiempo_uso'];
 }

@@ -31,7 +31,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('nombre', 'nombre')->all();
+        $roles = Role::pluck('name', 'name')->all();
         return view('usuarios.crear', compact('roles'));
     }
 
@@ -82,8 +82,8 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('nombre', 'nombre')->all();
-        $userRole = $user->roles->pluck('nombre', 'nombre')->all();
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
 
         return view('usuarios.editar', compact('user', 'roles', 'userRole'));
     }
@@ -102,7 +102,7 @@ class UsuarioController extends Controller
             'apellidos' => 'required',
             'dni' => 'required',
             'telefono' => 'required',
-            'email' => 'required|email|unique:users,email' .$id,
+            'email' => 'required|email|unique:users,email,' .$id,
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
