@@ -12,7 +12,14 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="text-left">Selecciona un patinete</h4>
-                            <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-5.316781997680665%2C37.667244511643865%2C-5.244684219360352%2C37.71926926474386&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/>
+                        <div>
+                            <div id="map"></div>
+                            <div class="form-group">
+                                <button href="{{ route('home') }}" class="btn btn-primary" tabindex="4">
+                                    Iniciar pago
+                                </button>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>

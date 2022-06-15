@@ -9,4 +9,8 @@ class Pago extends Model
 {
     use HasFactory;
     protected $fillable = ['cantidad', 'descripcion', 'fecha_pago'];
+
+    public function alquiler(){
+        return $this->belongsTo(Alquiler::class, 'id_cliente_alquiler');
+    }
 }

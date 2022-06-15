@@ -51,7 +51,10 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                            
+                                <div class="form-group">
+                                   <label for="tiempo_uso">Tiempo de uso</label>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>                            
                         </div>
                     </form>

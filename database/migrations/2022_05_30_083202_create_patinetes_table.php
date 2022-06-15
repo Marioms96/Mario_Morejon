@@ -21,6 +21,10 @@ class CreatePatinetesTable extends Migration
             $table->string('velocidad');
             $table->time('tiempo_uso');
             $table->timestamps();
+            $table->foreign('id_patinetes')
+            ->references('id_patinete')
+            ->on($tableNames['administrador'])
+            ->onDelete('cascade');
         });
     }
 

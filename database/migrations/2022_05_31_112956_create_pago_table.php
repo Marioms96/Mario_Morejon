@@ -19,6 +19,10 @@ class CreatePagoTable extends Migration
             $table->string('descripcion');
             $table->date('fecha_pago');
             $table->bigInteger('id_usuario_cliente');
+            $table->foreign('id_cliente_alquiler')
+            ->references('numero_pago')
+            ->on($tableNames['alquiler'])
+            ->onDelete('cascade');
         });
     }
 

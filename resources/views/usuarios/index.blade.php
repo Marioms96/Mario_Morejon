@@ -9,8 +9,10 @@
           <div class="row">
               <div class="col-lg-12">
                   <div class="card">
-                      <div class="card-body">                           
-                          <a class="btn btn-warning" href="{{ route('usuarios.create') }}">Nuevo</a>        
+                      <div class="card-body">     
+                        @can('crear-usuarios')                      
+                          <a class="btn btn-warning" href="{{ route('usuarios.create') }}">Nuevo</a>
+                          @endcan 
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#cb2626">                                     
                                   <th style="display: none;">ID</th>
@@ -39,12 +41,16 @@
                                       @endif
                                     </td>
 
-                                    <td>                                  
+                                    <td>      
+                                      @can('editar-usuarios')                            
                                       <a class="btn btn-info" href="{{ route('usuarios.edit',$usuario->id) }}">Editar</a>
-
+                                      @endcan
+                                      @can('eliminar-usuarios')
                                       {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id],'style'=>'display:inline']) !!}
                                           {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                                       {!! Form::close() !!}
+                                      @endcan
+                                      
                                     </td>
                                   </tr>
                                 @endforeach

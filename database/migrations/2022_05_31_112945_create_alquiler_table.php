@@ -19,6 +19,14 @@ class CreateAlquilerTable extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->integer('id_pago');
+            $table->foreign('id_cliente')
+            ->references('id_cliente_alquiler')
+            ->on($tableNames['cliente'])
+            ->onDelete('cascade');
+            $table->foreign('id_patinete')
+            ->references('id_patinete_alquiler')
+            ->on($tableNames['patinetes'])
+            ->onDelete('cascade');
         });
     }
 

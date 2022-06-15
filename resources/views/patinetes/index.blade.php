@@ -32,6 +32,8 @@
                                 <td>{{ $patinete->marca }}</td>
                                 <td>{{ $petinete->modelo }}</td>
                                 <td>{{ $petinete->estado }}</td>
+                                <td>{{ $petinete->velocidad }}</td>
+                                <td>{{ $petinete->tiempo_uso }}</td>
                                 <td>
                                     <form action="{{ route('patinetes.destroy',$patinete->id) }}" method="POST">                                        
                                         @can('editar-patinetes')

@@ -9,4 +9,8 @@ class Proveedor extends Model
 {
     use HasFactory;
     protected $fillable = ['iban'];
+
+    public function usuarios(){
+        return $this->belongsTo(User::class, 'id');
+    }
 }
