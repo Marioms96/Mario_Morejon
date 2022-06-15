@@ -4,6 +4,57 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>@yield('title') | {{ config('app.name') }}</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="content-script-type" content="text/javascript" />
+        <meta http-equiv="content-style-type" content="text/css" />
+        <meta http-equiv="content-language" content="de" />
+        <link rel="stylesheet" type="text/css" href="map.css"></link>
+        <script type="text/javascript" src="https://openlayers.org/api/OpenLayers.js"></script>
+        <script type="text/javascript" src="https://openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+        <script type="text/javascript" src="map.js"/>
+
+        <script type="text/javascript">
+
+            var map;
+            var layer_mapnik;
+            var layer_tah;
+            var layer_markers;
+
+            function drawmap() {
+                var popuptext = "<?php echo $devname; ?>";
+
+                OpenLayers.Lang.setCode('de');
+
+                var lon = <?php echo $lon; ?>;
+                var lat = <?php echo $lat; ?>;
+                var zoom = 19;
+
+                map = new OpenLayers.Map('map', {
+                    projection: new OpenLayers.Projection("EPSG:900913"),
+                    displayProjection: new OpenLayers.Projection("EPSG:4326"),
+                    controls: [
+                        new OpenLayers.Control.Navigation(),
+                        new OpenLayers.Control.LayerSwitcher(),
+                        new OpenLayers.Control.PanZoomBar()],
+                    maxExtent:
+                            new OpenLayers.Bounds(-20037508.34, -20037508.34,
+                                    20037508.34, 20037508.34),
+                    numZoomLevels: 18,
+                    maxResolution: 156543,
+                    units: 'meters'
+                });
+
+                layer_mapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
+                layer_markers = new OpenLayers.Layer.Markers("Address", {projection: new OpenLayers.Projection("EPSG:4326"),
+                    visibility: true, displayInLayerSwitcher: false});
+
+                map.addLayers([layer_mapnik, layer_markers]);
+                jumpTo(lon, lat, zoom);
+
+                addMarker(layer_markers, <?php echo $lon ?>, <?php echo $lat ?>, popuptext);
+
+            }
+        </script>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 4.1.1 -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -22,7 +73,7 @@
 
     @yield('css')
 </head>
-<body>
+<body onload="drawmap();">
 
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
