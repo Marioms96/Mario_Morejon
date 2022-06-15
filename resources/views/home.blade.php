@@ -14,10 +14,10 @@
     $sat = $sep[3];
     $time = $sep[4];
     $devname = $sep[5];
-    $filename = 'data.txt';
+    $filename = '/Applications/MAMP/htdocs/proyecto_patirental/data.txt';
 
 if (file_exists($filename)) {
-    $file = fopen("data.txt", 'r');
+    $file = fopen("/Applications/MAMP/htdocs/proyecto_patirental/data.txt", 'r');
     $data = fgets($file);
     fclose($file);
 
