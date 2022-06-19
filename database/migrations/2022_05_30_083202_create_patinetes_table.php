@@ -14,14 +14,14 @@ class CreatePatinetesTable extends Migration
     public function up()
     {
         Schema::create('patinetes', function (Blueprint $table) {
-            $table->string('id_patinete');
+            $table->primary('id_patinete')->unsigned();
             $table->string('marca');
             $table->string('modelo');
             $table->string('estado');
             $table->string('velocidad');
             $table->time('tiempo_uso');
             $table->timestamps();
-            $table->foreign('id_patinetes')
+            $table->primary('id_patinetes')
             ->references('id_patinete')
             ->on($tableNames['administrador'])
             ->onDelete('cascade');

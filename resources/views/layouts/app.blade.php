@@ -1,79 +1,69 @@
+<?php
+/*
+ *  Version 1.0
+ *  Created 2021-MAR-23
+ *  https://wwww.aeq-web.com
+ * 
+ */
+    $file = fopen("/Applications/MAMP/htdocs/patirental_project/data-eui-70b3d57ed00522c5.txt", 'r');
+    $data = fgets($file);
+    $sep = explode(";", $data);
+    $lat = $sep[0];
+    $lon = $sep[1];
+    $alt = $sep[2];
+    $sat = $sep[3];
+    $time = $sep[4];
+    $devname = $sep[5];
+    $filename = '/Applications/MAMP/htdocs/patirental_project/data-eui-70b3d57ed00522c5.txt';
+if (file_exists($filename)) {
+    $file = fopen("/Applications/MAMP/htdocs/patirental_project/data-eui-70b3d57ed00522c5.txt", 'r');
+    $data = fgets($file);
+    fclose($file);
+    $sep = explode(";", $data);
+    $lat = $sep[0];
+    $lon = $sep[1];
+    $alt = $sep[2];
+    $sat = $sep[3];
+    $time = $sep[4];
+    $devname = $sep[5];
+    $info_out = "LAT: " . $lat . " LON: " . $lon . " ALT: " . $alt . "m <br> SAT: " . $sat . " INSTANTE: " . $time;
+} else {
+    $info_out = "Error: " . $filename . " not exists";
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>@yield('title') | {{ config('app.name') }}</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="content-script-type" content="text/javascript" />
-        <meta http-equiv="content-style-type" content="text/css" />
-        <meta http-equiv="content-language" content="de" />
-        <link rel="stylesheet" type="text/css" href="map.css"></link>
-        <script type="text/javascript" src="https://openlayers.org/api/OpenLayers.js"></script>
-        <script type="text/javascript" src="https://openstreetmap.org/openlayers/OpenStreetMap.js"></script>
-        <script type="text/javascript" src="map.js"/>
+    <meta http-equiv="content-language" content="es" />
+    <link rel="stylesheet" type="text/css" href="https://iesanton-cp5014.wordpresstemporal.com/patirental/resources/css/map.css"></link>
+    <script type="text/javascript" src="https://openlayers.org/api/OpenLayers.js"></script>
+    
+    <script type="text/javascript" src="https://openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+    
+    <script type="text/javascript" src="https://iesanton-cp5014.wordpresstemporal.com/patirental/resources/js/map.js"></script>
 
-        <script type="text/javascript">
-
-            var map;
-            var layer_mapnik;
-            var layer_tah;
-            var layer_markers;
-
-            function drawmap() {
-                var popuptext = "<?php echo $devname; ?>";
-
-                OpenLayers.Lang.setCode('de');
-
-                var lon = <?php echo $lon; ?>;
-                var lat = <?php echo $lat; ?>;
-                var zoom = 19;
-
-                map = new OpenLayers.Map('map', {
-                    projection: new OpenLayers.Projection("EPSG:900913"),
-                    displayProjection: new OpenLayers.Projection("EPSG:4326"),
-                    controls: [
-                        new OpenLayers.Control.Navigation(),
-                        new OpenLayers.Control.LayerSwitcher(),
-                        new OpenLayers.Control.PanZoomBar()],
-                    maxExtent:
-                            new OpenLayers.Bounds(-20037508.34, -20037508.34,
-                                    20037508.34, 20037508.34),
-                    numZoomLevels: 18,
-                    maxResolution: 156543,
-                    units: 'meters'
-                });
-
-                layer_mapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
-                layer_markers = new OpenLayers.Layer.Markers("Address", {projection: new OpenLayers.Projection("EPSG:4326"),
-                    visibility: true, displayInLayerSwitcher: false});
-
-                map.addLayers([layer_mapnik, layer_markers]);
-                jumpTo(lon, lat, zoom);
-
-                addMarker(layer_markers, <?php echo $lon ?>, <?php echo $lat ?>, popuptext);
-
-            }
-        </script>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
     <!-- Bootstrap 4.1.1 -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- Ionicons -->
-    <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <link href="{{ asset('assets/css/@fortawesome/fontawesome-free/css/all.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
+    <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/@fortawesome/fontawesome-free/css/all.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}"/>
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
 
-@yield('page_css')
-<!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('web/css/components.css')}}">
+    @yield('page_css')
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('web/css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('web/css/components.css')}}"/>
     @yield('page_css')
 
     @yield('css')
 </head>
-<body onload="drawmap();">
+<body>
 
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
@@ -110,8 +100,8 @@
 <!-- Template JS File -->
 <script src="{{ asset('web/js/stisla.js') }}"></script>
 <script src="{{ asset('web/js/scripts.js') }}"></script>
-<script src="{{ mix('assets/js/profile.js') }}"></script>
-<script src="{{ mix('assets/js/custom/custom.js') }}"></script>
+<script src="{{ asset('assets/js/profile.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom.js') }}"></script>
 @yield('page_js')
 @yield('scripts')
 <script>

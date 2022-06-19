@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Patinetes extends Model
 {
     use HasFactory;
-    protected $fillable = ['marca','modelo', 'estado', 'velocidad', 'tiempo_uso'];
+    protected $fillable = ['id_patinete', 'marca','modelo', 'estado', 'velocidad', 'tiempo_uso'];
 
     public function administradores(){
         return $this->belongsTo(Adminitrador::class, 'id_administrador');

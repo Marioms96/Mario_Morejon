@@ -43,6 +43,7 @@ class PatinetesController extends Controller
     public function store(Request $request)
     {
         request()->validate([
+            'id_patinete' => 'required',
             'marca' => 'required' ,
             'modelo' => 'required',
             'estado' => 'required',

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
+use App\Models\Clientes;
 
-class ClienteController extends Controller
+class ClientesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-    //
+        return view('clientes.index');
     }
 
     /**
@@ -25,7 +26,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('cliente.crear');
+        return view('clientes.crear');
     }
 
     /**
@@ -36,7 +37,15 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'nombre_titular' => 'required' ,
+            'numero_tarjeta' => 'required',
+            'fecha_caducidad' => 'required',
+            'cvc' => 'required'
+        ]);
+
+        $clientes = Clientes::create($request->all());
+       return redirect()->route('clientes.index');
     }
 
     /**

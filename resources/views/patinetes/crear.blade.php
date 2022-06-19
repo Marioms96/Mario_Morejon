@@ -28,6 +28,12 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
+                                   <label for="id_patinete">ID patinete</label>
+                                   <input type="text" name="id_patinete" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
                                    <label for="marca">Marca</label>
                                    <input type="text" name="marca" class="form-control">
                                 </div>
@@ -53,6 +59,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                    <label for="tiempo_uso">Tiempo de uso</label>
+                                   <input type="text" name="tiempo_uso" class="form-control">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>                            

@@ -44,13 +44,9 @@ if (file_exists($filename)) {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body" >
-                            <h4 class="text-left">Selecciona un patinete</h4>
+                            <h4 class="text-left">Alquiler en curso</h4>
                             <div id="topline">
                                                                 <p><?php echo $info_out; ?></p>
-                                                            </div>
-                                                            <div>
-                                                            <p>Precio: 1€ para desbloquear patinete + 0.2€/min </p>
-                                                            <p>Patinete: Bongo Serie A - 25km/h</p>    
                                                             </div>      
                                                             <div id="header">
                                                                 <div id="osm">© <a href="http://www.openstreetmap.org">OpenStreetMap</a>
@@ -102,7 +98,7 @@ if (file_exists($filename)) {
                                                                 
                                                             </script> 
                                                             <div class="form-group">
-                                                                <a class="btn btn-primary" href="{{ route('clientes.create') }}" style="margin-top: 5px">Iniciar pago</a>
+                                                                <a class="btn btn-primary" style="margin-top: 5px" href="{{ route('home') }}">Finalizar alquiler</a>
                                 
                             </div>
                                             </div>                                

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AlquilerController extends Controller
 {
@@ -34,7 +35,13 @@ class AlquilerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'id_patinete_alquiler' => 'eui-70b3d57ed0051b97',
+            'fecha_inicio' => Carbon::now()
+        ]);
+
+       $alquiler = Alquiler::create($request->all());
+       return redirect()->route('cliente.index');
     }
 
     /**

@@ -17,12 +17,8 @@ class CreateClienteTable extends Migration
             $table->bigInteger('id_cliente');
             $table->string('nombre_titular');
             $table->bigInteger('numero_tarjeta');
-            $table->date('fecha_caducidad');
+            $table->string('fecha_caducidad');
             $table->integer('cvc');
-            $table->foreign('id_usuario_cliente')
-            ->references('id_cliente')
-            ->on($tableNames['pago'])
-            ->onDelete('cascade');
         });
     }
 

@@ -9,7 +9,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\PatinetesController;
 use App\Http\Controllers\PagoController;
-use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\AlquilerController;
 use App\Http\Controllers\AdministradorController;
 /*
@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('proveedor', ProveedorController::class);
     Route::resource('patinetes', PatinetesController::class);
     Route::resource('pagos', PagoController::class);
-    Route::resource('clientes', ClienteController::class);
+    Route::resource('clientes', ClientesController::class);
     Route::resource('alquiler', AlquilerController::class);
     Route::resource('administrador', AdministradorController::class);
 });

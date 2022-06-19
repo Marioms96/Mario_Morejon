@@ -23,7 +23,7 @@
                             </div>
                         @endif
 
-                    <form action="{{ route('cliente.crear') }}" method="POST">
+                    <form action="{{ route('clientes.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -50,10 +50,31 @@
                                    <input type="text" name="cvc" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                            
-                            <button type="submit" class="btn btn-primary">Pagar</button>                            
-                        </div>
+                            <div>
+                                <script>
+                                    $servername = "localhost";
+$database = "patirental";
+$username = "root";
+$password = "root";
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $database);
+// Check connection
+if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+}
+ 
+echo "Connected successfully";
+ 
+$sql = "INSERT INTO alquiler (id_cliente_alquiler, id_patinete_alquiler, fecha_inicio) VALUES ('1', 'eui-70b3d57ed00522c5', CURTIME())";
+if (mysqli_query($conn, $sql)) {
+      echo "New record created successfully";
+} else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+                                </script>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Pagar</button>
+</div>
                     </form>
                         </div>
                     </div>
